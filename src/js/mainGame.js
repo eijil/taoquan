@@ -1,10 +1,6 @@
 var debugBody = false;
 var Orientation = require('orientation.js');
 var cookie = require('./cookie');
-window.PhaserGlobal = { 
-	disableWebAudio: true,
-	hideBanner : true
-};
 
 var Game = function(game) {
     this.quans;
@@ -24,7 +20,13 @@ Game.prototype = {
     init: function() {
        
         var _this = this;
+        
+        this.stage.backgroundColor = '#342734';
+        this.physics.startSystem(Phaser.Physics.P2JS);
+        this.physics.p2.gravity.x = 0;
+        this.physics.p2.gravity.y = 60;
         this.music = this.game.add.audio('bgmusic', 1, true);
+
         var guide = $("#guide");
         var isFirstPlay = cookie.get("taoquan");
         if (!isFirstPlay) {
@@ -37,28 +39,12 @@ Game.prototype = {
         } else {
             this.readyGo();
         }
-        this.orientationEvent();
-
-        // this.scale.onOrientationChange.add(function(){
-        // 	console.log('isLandscape',_this.game.scale.isLandscape)
-        // 	console.log('isPortrait',_this.game.scale.isPortrait)
-        // 	console.log('isGameLandscape',_this.game.scale.isGameLandscape)
-        // 	if(_this.game.scale.isLandscape){
-        // 		console.log(_this.stage)
-        // 		_this.stage.worldRotation = -90;
-        // 	}
-        // }) 
+       
     },
     create: function() {
 
         var _this = this;
-
-        //this.game.world.setBounds(0, Math.abs((gameHeight - window.innerHeight)) * (750 / window.innerWidth), 750, 1334); //居底
-        this.stage.backgroundColor = '#342734';
-        this.physics.startSystem(Phaser.Physics.P2JS);
-        this.physics.p2.gravity.x = 0;
-        this.physics.p2.gravity.y = 60;
-
+        
         this.add.sprite(38, this.game.height - 1020, 'boxbg');
 
         this.createMaps();
@@ -68,29 +54,8 @@ Game.prototype = {
         this.add.sprite(490, this.game.height - 790, 'zhenshadow');
         //设置活动区域
         this.createArea();
-
-        //left bubble
-        this.leftEmitter = this.add.emitter(230, this.game.height - 374, 500);
-        this.leftEmitter.makeParticles('bubble');
-        this.leftEmitter.minParticleSpeed.set(-20, 0);
-        this.leftEmitter.maxParticleSpeed.set(20, -200);
-        this.leftEmitter.setRotation(-50, 50);
-        this.leftEmitter.minParticleScale = 0.3;
-        this.leftEmitter.maxParticleScale = 0.8;
-        this.leftEmitter.gravity = -150;
-        this.leftEmitter.start(false, 1800, 500, 0);
-
-        //right bubble
-        this.rightEmitter = this.add.emitter(525, this.game.height - 374, 500);
-        this.rightEmitter.makeParticles('bubble');
-        this.rightEmitter.minParticleSpeed.set(-20, 0);
-        this.rightEmitter.maxParticleSpeed.set(20, -200);
-        this.rightEmitter.setRotation(-50, 50);
-        this.rightEmitter.minParticleScale = 0.3;
-        this.rightEmitter.maxParticleScale = 0.8;
-        this.rightEmitter.gravity = -150;
-        this.rightEmitter.start(false, 1800, 500, 0);
-
+        //泡泡
+        this.createBubble();
         //圈
         this.createQuans();
         //针
@@ -117,14 +82,15 @@ Game.prototype = {
 
         this.add.sprite(0, this.game.height - 1334, 'texture');
       	
+      	//重力检测
+      	this.orientationEvent();
+       
+        //reset
+        this.score = 0;
+        document.getElementById('countDown').innerText = '60';
+        document.getElementById('score').innerText = '000';
        
         
-        //reset
-        $("#countDown").html('60');
-        $("#score").html('000');
-        this.score = 0;
-
-
     },
     createMaps: function() {
         this.mapIndexs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -140,10 +106,31 @@ Game.prototype = {
         this.maps.create(270, this.game.height - 804, 'map6');
         this.maps.create(345, this.game.height - 721, 'map7');
         this.maps.create(505, this.game.height - 666, 'map10');
-
         this.maps.setAll('alpha', '0');
+    },
 
+    createBubble:function(){
+    	//left bubble
+        this.leftEmitter = this.add.emitter(230, this.game.height - 374, 500);
+        this.leftEmitter.makeParticles('bubble');
+        this.leftEmitter.minParticleSpeed.set(-20, 0);
+        this.leftEmitter.maxParticleSpeed.set(20, -200);
+        this.leftEmitter.setRotation(-50, 50);
+        this.leftEmitter.minParticleScale = 0.3;
+        this.leftEmitter.maxParticleScale = 0.8;
+        this.leftEmitter.gravity = -150;
+        this.leftEmitter.start(false, 1800, 500, 0);
 
+        //right bubble
+        this.rightEmitter = this.add.emitter(525, this.game.height - 374, 500);
+        this.rightEmitter.makeParticles('bubble');
+        this.rightEmitter.minParticleSpeed.set(-20, 0);
+        this.rightEmitter.maxParticleSpeed.set(20, -200);
+        this.rightEmitter.setRotation(-50, 50);
+        this.rightEmitter.minParticleScale = 0.3;
+        this.rightEmitter.maxParticleScale = 0.8;
+        this.rightEmitter.gravity = -150;
+        this.rightEmitter.start(false, 1800, 500, 0);
     },
     createQuans: function() {
 
@@ -396,18 +383,15 @@ Game.prototype = {
         } else {
             this.enbaleMusic = true;
             this.musicBtn.frame = 0;
-            this.music.resume();
-            console.log(this.music);
-            
+            this.music.resume();   
         }
-
     },
     restart: function() {
-
         mainGame.state.start('Main');
     },
+    //debug
     render() {
-    	this.game.debug.text('FPS: ' + this.game.time.fps || '--', 20, 30, '', '30px Arial');
+    	//this.game.debug.text('FPS: ' + this.game.time.fps || '--', 20, 30, '', '30px Arial');
         // this.game.debug.geom(this.line1, 'rgb(0,0,0)');
         // this.game.debug.geom(testline1,'rgb(0,0,0)');
         // this.game.debug.spriteBounds(test);
