@@ -1,0 +1,349 @@
+/*-start:游戏自定义样式-*/
+#__bs_notify__{ display: none!important}
+
+body{
+	width: 750px;
+}
+#container{
+	width: 750px;
+	height: 100%;
+	overflow:hidden;
+}
+.preload{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: url(../img/preloadbg.jpg) no-repeat #332633;
+	background-size: 750px 1334px;
+	top: 0;
+	z-index: 10;
+
+}
+.progress{
+	color: #e6ca6a;
+	font-size: 30px;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 1027px;
+
+}
+.loading-text1{
+	width: 644px;
+	height: 218px;
+	position: absolute;
+	background: url(../img/loading-text1.png);
+	background-size: contain;
+	left: 71px;
+	top: 205px;
+	transform: scale(0.97);
+}
+.loading-text2{
+	width: 627px;
+	height: 220px;
+	position: absolute;
+	background: url(../img/loading-text2.png);
+	background-size: contain;
+	left: 50px;
+	top: 405px;
+	transform: scale(0.97);
+}
+.loading-text3{
+	width: 653px;
+	height: 134px;
+	position: absolute;
+	background: url(../img/loading-text3.png);
+	background-size: contain;
+	left: 50px;
+	top: 613px;
+	transform: scale(0.97);
+}
+.earth{
+	width: 188px;
+	height: 187px;
+	background: url(../img/earth.gif);
+	background-size: contain;
+	position: absolute;
+	left: 280px;
+	top: 830px;
+}
+#guide{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: url(../img/guide.png) no-repeat center bottom;
+	background-size: 750px 1334px;
+	width: 100%;
+	height: 100%;
+	z-index: 11;
+	display: none;
+}
+.readygo{
+	position: absolute;
+	display: none;
+	width: 100%;
+	height: 100%;
+	background:rgba(0,0,0,.5);
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+.readygo .ready-num{
+	background: url(../img/321.png);
+	width: 100px;
+	height: 150px;
+	background-size: 500px 150px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -50px;
+	margin-top:-100px;
+	opacity: 1;
+	visibility: hidden;
+}
+.readygo .ready-num.run{
+	visibility: visible;
+	opacity: 0;
+	transform: scale(1.6);
+	transition: opacity 0.4s ease-out .2s,transform 0.4s ease-out .2s,;
+}
+.ready-num.num3{
+	background-position: 0 0;
+}
+.ready-num.num2{
+	background-position: -100px 0;
+}
+.ready-num.num1{
+	background-position: -200px 0;
+}
+.ready-num.num0{
+	width: 200px;
+	margin-left:-100px;
+	background-position: -300px 0;
+}
+
+.padt_p_overlay{
+	opacity: .6;
+}
+.padt_p_hide_btn{
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	background: url(../img/close.png) no-repeat;
+	background-size: contain;
+	top: calc((100%/2) + (884px/2) + 20px);
+}
+.padt_p_type_custom0 .padt_p_content{
+	width: 629px;
+	height: 880px;
+	background: url(../img/rule.png) no-repeat;
+	background-size: contain;
+	
+	
+}
+.padt_p_type_custom1 .padt_p_content{
+	background: url(../img/zero.png) no-repeat;
+	width: 750px;
+	height: 1116px;
+	background-size: 750px 1116px;
+	position: absolute;
+	bottom:200px;
+	left: 0;
+}
+.padt_p_type_custom1 .padt_p_hide_btn{
+	display: none;
+}
+#countDown{
+	color: #dc4a10;
+	font-size:40px;
+	position: absolute;
+	/*top: 338px;*/
+	bottom: 955px;
+	left: 213px;
+	width: 80px;
+	height: 42px;
+	letter-spacing: 20px;
+	font-weight: bold;
+	font-family: 'verdana';
+}
+#score{
+	color: #dc4a10;
+	font-size:40px;
+	position: absolute;
+	bottom: 954px;
+	left: 434px;
+	width: 80px;
+	height: 42px;
+	letter-spacing: 17px;
+	font-weight: bold;
+	font-family: 'verdana';
+}
+.padt_p_btn_jump0 {
+	position: absolute;
+	width: 524px;
+	height: 109px;
+	background: url(../img/jump0.png) no-repeat;
+	background-size: contain;
+	top: 955px;
+	left: 112px;
+}
+.padt_p_btn_share{
+  position: absolute;
+  background: url(../img/share.png) no-repeat;
+  background-size: contain;
+  height: 30px;
+  width: 184px;
+  top: 1144px;
+  left: 78px;
+}
+.padt_p_btn_replay{
+  position: absolute;
+  background: url(../img/replay.png) no-repeat;
+  background-size: contain;
+  height: 30px;
+  width: 184px;
+  top: 1144px;
+  right: 78px;
+}
+.wx .padt_p_btn_replay{
+	right: 50%;
+	transform: translateX(50%);
+}
+.padt_p_title{
+	position: absolute;
+	width: 160px;
+	font-size: 50px;
+	font-weight: bold;
+	color: #faeec5;
+	top: 210px;
+	left: 296px;
+	text-shadow: 0px 5px 10px #b1bc4b;
+	font-family: 'Microsoft Yahei';
+	text-align: center;
+}
+.padt_p_type_coupon .padt_p_content{
+	background: url(../img/success.png) no-repeat;
+	width: 750px;
+	height: 1117px;
+	background-size: 750px 1117px;
+	position: absolute;
+	bottom: 200px;
+	left: 0;
+}
+.padt_p_type_coupon .padt_p_pack{
+	position: absolute;
+	width:410px;
+	height: 280px;
+	left: 170px;
+	top: 604px;
+}
+.padt_p_type_coupon .padt_p_pack_item_val{
+	width: 165px;
+	font-size: 72px;
+	font-family: verdana;
+	left: 50px;
+	top: 10px;
+	text-align: left;
+	overflow: hidden;
+	word-break: no
+}
+.padt_p_type_coupon .padt_p_pack_item_val span{
+	font-family: arial;
+	font-size: 55px;
+	margin-right: 1px;
+	
+}
+.padt_p_type_coupon .padt_p_pack_item_cond{
+	left: 220px;
+	top:20px;
+	font-size: 18px;
+	color: #fff8e3;
+	background: #f99f00;
+	border-radius: 10px;
+	padding:0 8px;
+	padding-top: 3px;
+	padding-bottom: 2px;
+}
+.padt_p_type_coupon .padt_p_hide_btn,.padt_p_type_retry .padt_p_hide_btn,.padt_p_type_login .padt_p_hide_btn,.padt_p_type_fail .padt_p_hide_btn{
+	display: none;
+}
+.padt_p_pack_item_cate{
+	font-size: 27px;
+	width: 313px;
+	top: 105px;
+	left: 46px;
+	text-align: center;
+	height: 27px;
+	overflow: hidden;
+}
+.padt_p_pack_item_tips{
+	font-size:24px;
+	top: 55px;
+	left: 220px;
+	font-weight: bold;
+
+}
+.padt_p_type_coupon .padt_p_btn_jump0{
+	background: url(../img/button1.png) no-repeat;
+	background-size: contain;
+}
+/**重试**/
+.padt_p_type_retry .padt_p_content{
+	background: url(../img/retrybg.png) no-repeat;
+	background-size: 629px 495px;
+	width: 629px;
+	height: 495px;
+}
+.padt_p_btn_retry{
+	background: url(../img/retry.png) no-repeat;
+	background-size: 297px 73px;
+	width: 297px;
+	height: 73px;
+	position: absolute;
+	top: 381px;
+	left: 176px;
+}
+.padt_p_type_login .padt_p_content{
+	background: url(../img/loginbg.png) no-repeat;
+	background-size: contain;
+	width: 750px;
+	height: 1114px;
+	position: absolute;
+	bottom:200px;
+	left: 0;
+}
+.padt_p_btn_login{
+	background: url(../img/login.png) no-repeat;
+	background-size: contain;
+	width: 524px;
+	height: 109px;
+	top: 955px;
+	left: 113px;
+	position: absolute;
+
+}
+.padt_p_type_fail .padt_p_content{
+	background: url(../img/fail.png) no-repeat;
+	background-size: contain;
+	width: 750px;
+	height: 1118px;
+	position: absolute;
+	bottom:200px;
+	left: 0;
+}
+.padt_p_type_fail .padt_p_btn_jump0{
+	background: url(../img/button2.png) no-repeat;
+	background-size: contain;
+}
+.btnStart{
+	position: absolute;
+	background: url(../img/btnStart.png) no-repeat;
+	background-size: contain;
+	width: 351px;
+	height: 92px;
+	top: 900px;
+	left: 50%;
+	margin-left: -175px;
+	display: none;
+}
+/*-end:游戏自定义样式-*/

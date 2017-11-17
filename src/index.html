@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <title></title>
+    <script>
+    //start:自动配置rem
+    (function(window) {
+        var STD_WIDTH = 750, //标准宽度（单位：像素）
+            STD_FONT_SIZE = 100, //标准宽度下html的字体大小（单位：像素）
+            root = document.documentElement,
+            fontSize, //当前root的fontSize
+            scale, //当前相对于标准宽度的缩放比例
+            tDelayResize = null, //delayResize方法的计时器
+
+            /**
+             * px转rem
+             * @param {Number} px - px
+             * @returns {Number} rem
+             */
+            pxToRem = function(px) {
+                return px / fontSize;
+            },
+
+            /**
+             * 标准px转rem
+             * @param {Number} stdPx - 标准px
+             * @returns {Number} rem
+             */
+            stdPxToRem = function(stdPx) {
+                return stdPx / STD_FONT_SIZE;
+            },
+
+            /**
+             * rem转px
+             * @param {Number} rem - rem
+             * @returns {Number} px
+             */
+            remToPx = function(rem) {
+                return rem * fontSize;
+            },
+
+            /**
+             * rem转标准px
+             * @param {Number} rem - rem
+             * @returns {Number} 标准px
+             */
+            remToStdPx = function(rem) {
+                return rem * STD_FONT_SIZE;
+            },
+
+            /**
+             * px转标准px
+             * @param {Number} px - px
+             * @returns {Number} 标准px
+             */
+            pxToStdPx = function(px) {
+                return px / scale;
+            },
+
+            /**
+             * 标准px转px
+             * @param {Number} 标准px - 标准px
+             * @returns {Number} px
+             */
+            stdPxToPx = function(px) {
+                return px * scale;
+            },
+
+            /**
+             * 重置fontSize大小
+             */
+            resize = function() {
+                scale = root.clientWidth / STD_WIDTH;
+                var newFontSize = scale * STD_FONT_SIZE;
+                if (fontSize != newFontSize) {
+                    fontSize = newFontSize;
+                    autoRem.fontSize = fontSize;
+                    autoRem.scale = scale;
+                    root.style.fontSize = fontSize + 'px';
+                }
+            },
+
+            /**
+             * 延迟触发resize方法
+             */
+            delayResize = function() {
+                clearTimeout(tDelayResize);
+                tDelayResize = setTimeout(resize, 100);
+            },
+
+            /**
+             * 自动配置rem
+             */
+            autoRem = {
+                pxToRem: pxToRem,
+                stdPxToRem: stdPxToRem,
+                remToPx: remToPx,
+                remToStdPx: remToStdPx,
+                pxToStdPx: pxToStdPx,
+                stdPxToPx: stdPxToPx,
+                STD_FONT_SIZE: STD_FONT_SIZE,
+                STD_WIDTH: STD_WIDTH,
+                fontSize: null, //当前根元素上的fontSize（单位：px）
+                scale: null //当前的缩放比例
+            };
+        resize();
+        window.addEventListener('resize', delayResize, false);
+        window.autoRem = autoRem;
+    })(window);
+    //end:自动配置rem
+
+    </script>
+    <link href="css/game.css" rel="stylesheet">
+</head>
+
+<body >
+    <div id="container"></div>
+    <div class="preload">
+        <div class="loading-text1"></div>
+        <div class="loading-text2"></div>
+        <div class="loading-text3"></div>
+        <div class="loadingbox">
+	        <div class="earth"></div>
+	        <div class="progress">0%</div>
+        </div>
+        <div class="btnStart"></div>
+    </div>
+    <div id="guide"></div>
+    <div class="readygo" id="readygo">
+    	<div class="ready-num num3">
+    	</div>
+    	<div class="ready-num num2">
+    	</div>
+    	<div class="ready-num num1">
+    	</div>
+    	<div class="ready-num num0">
+    	</div>
+    </div>
+    <div id="countDown">
+    	60
+    </div>
+    <div id="score">000</div>
+    <!--start:游戏的html可以写在这里-->
+    <!--end:游戏的html可以写在这里-->
+    <!--start:loading-->
+    <p class="padt_loading" id="padt_loading" style="display:none;">
+        <span></span>
+    </p>
+    <!--end:loading-->
+    <!--start:toast-->
+    <p class="padt_toast" id="padt_toast" style="display:none;">网络开小差啦</p>
+
+
+    <!--end:toast-->
+    <script>
+    if (typeof XView == 'undefined' && location.search.match(/(\?|&)xview=true(&|$)/g)) {
+        window.XView = null;
+    }
+    </script>
+    <script src="./js/conf.js"></script>
+    <script src="//wl.jd.com/unify.min.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
