@@ -3236,10 +3236,10 @@ Preloader.prototype = {
 
     },
     loadResources: function() {
-        this.load.image('321', '../taoquan/img/321.png');
-        this.load.image('quan', '../taoquan/img/quan.png');
-        this.load.image('quanback', '../taoquan/img/bquan.png');
-        this.load.image('quanfront', '../taoquan/img/fquan.png');
+        this.load.image('321', '../img/321.png');
+        this.load.image('quan', '../img/quan.png');
+        this.load.image('quanback', '../img/bquan.png');
+        this.load.image('quanfront', '../img/fquan.png');
         this.load.image('boxbg', '../img/boxbg.png');
         this.load.image('bubble', '../img/bubble.png');
         this.load.image('map', '../img/map.png');
