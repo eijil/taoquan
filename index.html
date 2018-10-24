@@ -153,7 +153,7 @@
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
             navigator.serviceWorker.register('/taoquan/sw.js', {
-                scope: '/'
+scope: '/taoquan/'
             }).then(function (registration) {
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
             }, function (err) {
