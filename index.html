@@ -5,166 +5,231 @@
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
     <meta content="telephone=no" name="format-detection">
-
+    <link rel="manifest" href="manifest.json" />
     <title>给世界点颜色看看</title>
 
     <script>
-    //start:自动配置rem
-    (function(window) {
-        var STD_WIDTH = 750, //标准宽度（单位：像素）
-            STD_FONT_SIZE = 100, //标准宽度下html的字体大小（单位：像素）
-            root = document.documentElement,
-            fontSize, //当前root的fontSize
-            scale, //当前相对于标准宽度的缩放比例
-            tDelayResize = null, //delayResize方法的计时器
+        //start:自动配置rem
+        (function (window) {
+            var STD_WIDTH = 750, //标准宽度（单位：像素）
+                STD_FONT_SIZE = 100, //标准宽度下html的字体大小（单位：像素）
+                root = document.documentElement,
+                fontSize, //当前root的fontSize
+                scale, //当前相对于标准宽度的缩放比例
+                tDelayResize = null, //delayResize方法的计时器
 
-            /**
-             * px转rem
-             * @param {Number} px - px
-             * @returns {Number} rem
-             */
-            pxToRem = function(px) {
-                return px / fontSize;
-            },
+                /**
+                 * px转rem
+                 * @param {Number} px - px
+                 * @returns {Number} rem
+                 */
+                pxToRem = function (px) {
+                    return px / fontSize;
+                },
 
-            /**
-             * 标准px转rem
-             * @param {Number} stdPx - 标准px
-             * @returns {Number} rem
-             */
-            stdPxToRem = function(stdPx) {
-                return stdPx / STD_FONT_SIZE;
-            },
+                /**
+                 * 标准px转rem
+                 * @param {Number} stdPx - 标准px
+                 * @returns {Number} rem
+                 */
+                stdPxToRem = function (stdPx) {
+                    return stdPx / STD_FONT_SIZE;
+                },
 
-            /**
-             * rem转px
-             * @param {Number} rem - rem
-             * @returns {Number} px
-             */
-            remToPx = function(rem) {
-                return rem * fontSize;
-            },
+                /**
+                 * rem转px
+                 * @param {Number} rem - rem
+                 * @returns {Number} px
+                 */
+                remToPx = function (rem) {
+                    return rem * fontSize;
+                },
 
-            /**
-             * rem转标准px
-             * @param {Number} rem - rem
-             * @returns {Number} 标准px
-             */
-            remToStdPx = function(rem) {
-                return rem * STD_FONT_SIZE;
-            },
+                /**
+                 * rem转标准px
+                 * @param {Number} rem - rem
+                 * @returns {Number} 标准px
+                 */
+                remToStdPx = function (rem) {
+                    return rem * STD_FONT_SIZE;
+                },
 
-            /**
-             * px转标准px
-             * @param {Number} px - px
-             * @returns {Number} 标准px
-             */
-            pxToStdPx = function(px) {
-                return px / scale;
-            },
+                /**
+                 * px转标准px
+                 * @param {Number} px - px
+                 * @returns {Number} 标准px
+                 */
+                pxToStdPx = function (px) {
+                    return px / scale;
+                },
 
-            /**
-             * 标准px转px
-             * @param {Number} 标准px - 标准px
-             * @returns {Number} px
-             */
-            stdPxToPx = function(px) {
-                return px * scale;
-            },
+                /**
+                 * 标准px转px
+                 * @param {Number} 标准px - 标准px
+                 * @returns {Number} px
+                 */
+                stdPxToPx = function (px) {
+                    return px * scale;
+                },
 
-            /**
-             * 重置fontSize大小
-             */
-            resize = function() {
-                scale = root.clientWidth / STD_WIDTH;
-                var newFontSize = scale * STD_FONT_SIZE;
-                if (fontSize != newFontSize) {
-                    fontSize = newFontSize;
-                    autoRem.fontSize = fontSize;
-                    autoRem.scale = scale;
-                    root.style.fontSize = fontSize + 'px';
-                }
-            },
+                /**
+                 * 重置fontSize大小
+                 */
+                resize = function () {
+                    scale = root.clientWidth / STD_WIDTH;
+                    var newFontSize = scale * STD_FONT_SIZE;
+                    if (fontSize != newFontSize) {
+                        fontSize = newFontSize;
+                        autoRem.fontSize = fontSize;
+                        autoRem.scale = scale;
+                        root.style.fontSize = fontSize + 'px';
+                    }
+                },
 
-            /**
-             * 延迟触发resize方法
-             */
-            delayResize = function() {
-                clearTimeout(tDelayResize);
-                tDelayResize = setTimeout(resize, 100);
-            },
+                /**
+                 * 延迟触发resize方法
+                 */
+                delayResize = function () {
+                    clearTimeout(tDelayResize);
+                    tDelayResize = setTimeout(resize, 100);
+                },
 
-            /**
-             * 自动配置rem
-             */
-            autoRem = {
-                pxToRem: pxToRem,
-                stdPxToRem: stdPxToRem,
-                remToPx: remToPx,
-                remToStdPx: remToStdPx,
-                pxToStdPx: pxToStdPx,
-                stdPxToPx: stdPxToPx,
-                STD_FONT_SIZE: STD_FONT_SIZE,
-                STD_WIDTH: STD_WIDTH,
-                fontSize: null, //当前根元素上的fontSize（单位：px）
-                scale: null //当前的缩放比例
-            };
-        resize();
-        window.addEventListener('resize', delayResize, false);
-        window.autoRem = autoRem;
-    })(window);
-    //end:自动配置rem
-  
+                /**
+                 * 自动配置rem
+                 */
+                autoRem = {
+                    pxToRem: pxToRem,
+                    stdPxToRem: stdPxToRem,
+                    remToPx: remToPx,
+                    remToStdPx: remToStdPx,
+                    pxToStdPx: pxToStdPx,
+                    stdPxToPx: stdPxToPx,
+                    STD_FONT_SIZE: STD_FONT_SIZE,
+                    STD_WIDTH: STD_WIDTH,
+                    fontSize: null, //当前根元素上的fontSize（单位：px）
+                    scale: null //当前的缩放比例
+                };
+            resize();
+            window.addEventListener('resize', delayResize, false);
+            window.autoRem = autoRem;
+        })(window);
+        //end:自动配置rem
     </script>
     <link href="css/game.css" rel="stylesheet">
 </head>
 
-<body >
-	
+<body>
+
+    <style>
+        .addScreenModal {
+            display: none;
+            position: absolute;
+            width: 60%;
+            height: 100px;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%)translateY(-50%);
+            background: #fff;
+
+        }
+
+        .addScreenModal .close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: #333;
+            font-size: 30px;
+        }
+
+        .addScreenModal .modal-content {
+            padding: 20px;
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        .addScreenModal a {
+            padding-top: 20px;
+            text-decoration: underline;
+        }
+    </style>
+    <div id="myModal" class="addScreenModal">
+        <!-- Modal content -->
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <p>添加到主屏幕？</p>
+            <a onclick="offlinePrompt()">安装</a>
+        </div>
+    </div>
+
     <div id="container"></div>
     <div class="preload">
-    	<div class="logo"></div>
-    	<div class="texture"></div>
+        <div class="logo"></div>
+        <div class="texture"></div>
         <div class="loading-text1"></div>
         <div class="loading-text2"></div>
         <div class="loading-text3"></div>
         <div class="loadingbox">
-	        <div class="earth"></div>
-	        <div class="progress">0%</div>
+            <div class="earth"></div>
+            <div class="progress">0%</div>
         </div>
         <div class="btnStart"></div>
     </div>
     <div id="guide"></div>
     <div class="readygo" id="readygo">
-    	<div class="ready-num num3">
-    	</div>
-    	<div class="ready-num num2">
-    	</div>
-    	<div class="ready-num num1">
-    	</div>
-    	<div class="ready-num num0">
-    	</div>
+        <div class="ready-num num3">
+        </div>
+        <div class="ready-num num2">
+        </div>
+        <div class="ready-num num1">
+        </div>
+        <div class="ready-num num0">
+        </div>
     </div>
     <!--end:toast-->
     <script>
-   
-    </script>
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/taoquan/sw.js', {
-scope: '/taoquan/'
-            }).then(function (registration) {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function (err) {
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-    }
-</script>
-    <script src="./js/conf.js"></script>
 
-    
+    </script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function (err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function (e) {
+            console.log('beforeinstallprompt triggered');
+            e.preventDefault();
+            deferredPrompt = e;
+            modal.style.display = 'block';
+        });
+        // Get the modal
+        var modal = document.getElementById('myModal');
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName('close')[0];
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = 'none';
+        }
+
+        function offlinePrompt() {
+            deferredPrompt.prompt();
+        }
+    </script>
+    <script src="./js/conf.js"></script>
     <script src="./js/game.js"></script>
     <script src="./js/main.js"></script>
 

@@ -1,8 +1,8 @@
 var cacheName = 'phaser-pwa';
 var filesToCache = [
-    '/taoquan',
-    '/taoquan/index.html',
-    '/taoquan/img/logo.png',
+    '/',
+    '/index.html',
+    '/img/logo.png',
     '/img/btnStart.png',
     '/img/321.png',
     '/img/quan.png',
