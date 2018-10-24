@@ -3267,7 +3267,7 @@ Preloader.prototype = {
         this.load.image('texture', '../taoquan/img/texture_.png');
         this.load.image('rule', '../taoquan/img/rule.png');
         this.load.image('zhenshadow', '../taoquan/img/zhenshadow.png');
-        this.load.image('water', '../img/taoquan/water.png');
+        this.load.image('water', '../taoquan/img/water.png');
         this.load.spritesheet('leftButton', '../taoquan/img/leftbutton.png', 254, 216);
         this.load.spritesheet('rightButton', '../taoquan/img/rightbutton.png', 254, 216);
 
