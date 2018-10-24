@@ -4,7 +4,7 @@
     "background_color": "#2196f3",
     "display": "fullscreen",
     "orientation": "portrait",
-    "Scope": "/",
+    "Scope": "/taoquan/",
     "start_url": "/",
     "icons": [
         {
