@@ -3236,24 +3236,45 @@ Preloader.prototype = {
 
     },
     loadResources: function() {
-        this.load.image('321', '../taoquan/img/321.png');
-        this.load.image('quan', '../taoquan/img/quan.png');
-        this.load.image('quanback', '../taoquan/img/bquan.png');
-        this.load.image('quanfront', '../taoquan/img/fquan.png');
-        this.load.image('boxbg', '../taoquan/img/boxbg.png');
-        this.load.image('bubble', '../taoquan/img/bubble.png');
-        this.load.image('map', '../taoquan/img/map.png');
+        this.load.image('321', '../img/321.png');
+        this.load.image('quan', '../img/quan.png');
+        this.load.image('quanback', '../img/bquan.png');
+        this.load.image('quanfront', '../img/fquan.png');
+        this.load.image('boxbg', '../img/boxbg.png');
+        this.load.image('bubble', '../img/bubble.png');
+        this.load.image('map', '../img/map.png');
         
-        this.load.image('gamebox', '../taoquan/img/gamebox.png');
-        this.load.image('texture', '../taoquan/img/texture_.png');
-        this.load.image('rule', '../taoquan/img/rule.png');
-        this.load.image('zhenshadow', '../taoquan/img/zhenshadow.png');
-        this.load.image('water', '../img/taoquan/water.png');
-        this.load.spritesheet('leftButton', '../taoquan/img/leftbutton.png', 254, 216);
-        this.load.spritesheet('rightButton', '../taoquan/img/rightbutton.png', 254, 216);
+        this.load.image('gamebox', '../img/gamebox.png');
+        this.load.image('texture', '../img/texture_.png');
+        this.load.image('rule', '../img/rule.png');
+        this.load.image('zhenshadow', '../img/zhenshadow.png');
+        this.load.image('water', '../img/water.png');
+        this.load.spritesheet('leftButton', '../img/leftbutton.png', 254, 216);
+        this.load.spritesheet('rightButton', '../img/rightbutton.png', 254, 216);
         
-        this.load.image('zhen', '../taoquan/img/zhen.png');
-        this.load.image('+10', '../taoquan/img/+10.png');
+        this.load.image('zhen', '../img/zhen.png');
+        this.load.image('+10', '../img/+10.png');
+        
+        // this.load.image('321', '../taoquan/img/321.png');
+        // this.load.image('quan', '../taoquan/img/quan.png');
+        // this.load.image('quanback', '../taoquan/img/bquan.png');
+        // this.load.image('quanfront', '../taoquan/img/fquan.png');
+        // this.load.image('boxbg', '../taoquan/img/boxbg.png');
+        // this.load.image('bubble', '../taoquan/img/bubble.png');
+        // this.load.image('map', '../taoquan/img/map.png');
+
+        // this.load.image('gamebox', '../taoquan/img/gamebox.png');
+        // this.load.image('texture', '../taoquan/img/texture_.png');
+        // this.load.image('rule', '../taoquan/img/rule.png');
+        // this.load.image('zhenshadow', '../taoquan/img/zhenshadow.png');
+        // this.load.image('water', '../img/taoquan/water.png');
+        // this.load.spritesheet('leftButton', '../taoquan/img/leftbutton.png', 254, 216);
+        // this.load.spritesheet('rightButton', '../taoquan/img/rightbutton.png', 254, 216);
+
+        // this.load.image('zhen', '../taoquan/img/zhen.png');
+        // this.load.image('+10', '../taoquan/img/+10.png');
+
+
         // this.load.audio('getScore','https://static.360buyimg.com/jdcopr/activity/20171117/getScore.mp3');
         // this.load.audio('bgmusic','https://static.360buyimg.com/jdcopr/activity/20171117/bg.mp3');
         // this.load.audio('countDown','https://static.360buyimg.com/jdcopr/activity/20171117/countDown.mp3');
