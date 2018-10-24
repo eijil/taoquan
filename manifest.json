@@ -1,11 +1,11 @@
 {
-    "name": "taoquan",
+    "name": "套圈圈",
     "theme_color": "#2196f3",
     "background_color": "#2196f3",
     "display": "fullscreen",
     "orientation": "portrait",
     "Scope": "/taoquan/",
-    "start_url": "/",
+    "start_url": "/taoquan/",
     "icons": [
         {
             "src": "icon/icon-192x192.png",
