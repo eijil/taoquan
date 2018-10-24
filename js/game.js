@@ -2799,12 +2799,12 @@ Game.prototype = {
         this.textScore0 = this.add.text(0, 0, "0", style);
         this.textScore0.setTextBounds(520,textY,35, 42);
 
-        //规则弹窗
-        var ruleBtn = this.add.button(300, this.game.height - 80, null, function() {
-            game.popup.custom0();
-        }, this);
-        ruleBtn.width = 145;
-        ruleBtn.height = 60;
+        // //规则弹窗
+        // var ruleBtn = this.add.button(300, this.game.height - 80, null, function() {
+        //     game.popup.custom0();
+        // }, this);
+        // ruleBtn.width = 145;
+        // ruleBtn.height = 60;
 
         this.add.tileSprite(0, 0, this.game.width, this.game.height, 'texture');
 
