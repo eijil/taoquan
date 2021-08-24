@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
     <meta content="telephone=no" name="format-detection">
-    <title></title>
+<link rel="manifest" href="manifest.json" />
+    <title>给世界点颜色看看</title>
+
     <script>
     //start:自动配置rem
     (function(window) {
@@ -112,14 +114,57 @@
         window.autoRem = autoRem;
     })(window);
     //end:自动配置rem
-
+  
     </script>
     <link href="css/game.css" rel="stylesheet">
 </head>
 
 <body >
+<style>
+    .addScreenModal {
+        display: none;
+        position: absolute;
+        width: 60%;
+        height: 100px;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%)translateY(-50%);
+        background: #fff;
+
+    }
+
+    .addScreenModal .close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: #333;
+        font-size: 30px;
+    }
+
+    .addScreenModal .modal-content {
+        padding: 20px;
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .addScreenModal a {
+        padding-top: 20px;
+        text-decoration: underline;
+    }
+</style>
+<div id="myModal" class="addScreenModal">
+    <!-- Modal content -->
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <p>添加到主屏幕？</p>
+        <a onclick="offlinePrompt()">安装</a>
+    </div>
+</div>
     <div id="container"></div>
     <div class="preload">
+    	<div class="logo"></div>
+    	<div class="texture"></div>
         <div class="loading-text1"></div>
         <div class="loading-text2"></div>
         <div class="loading-text3"></div>
@@ -140,31 +185,54 @@
     	<div class="ready-num num0">
     	</div>
     </div>
-    <div id="countDown">
-    	60
-    </div>
-    <div id="score">000</div>
-    <!--start:游戏的html可以写在这里-->
-    <!--end:游戏的html可以写在这里-->
-    <!--start:loading-->
-    <p class="padt_loading" id="padt_loading" style="display:none;">
-        <span></span>
-    </p>
-    <!--end:loading-->
-    <!--start:toast-->
-    <p class="padt_toast" id="padt_toast" style="display:none;">网络开小差啦</p>
-
-
     <!--end:toast-->
-    <script>
-    if (typeof XView == 'undefined' && location.search.match(/(\?|&)xview=true(&|$)/g)) {
-        window.XView = null;
+    
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/taoquan/sw.js', {
+                scope: '/taoquan/'
+            }).then(function (registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
     }
-    </script>
+
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', function (e) {
+        console.log('beforeinstallprompt triggered');
+        e.preventDefault();
+        deferredPrompt = e;
+        modal.style.display = 'block';
+    });
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName('close')[0];
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = 'none';
+    }
+
+    function offlinePrompt() {
+        deferredPrompt.prompt();
+    }
+</script>
     <script src="./js/conf.js"></script>
-    <script src="//wl.jd.com/unify.min.js"></script>
+
+    
     <script src="./js/game.js"></script>
     <script src="./js/main.js"></script>
+
+
 </body>
 
 </html>

@@ -18,10 +18,7 @@ var Preloader = require('./preloader.js');
 var Main = require('./mainGame.js');
 
 
-var mainGame = new Phaser.Game(750,750 / window.innerWidth * window.innerHeight, Phaser.CANVAS, 'container');
-mainGame.state.add('Preload', Preloader,false);
-mainGame.state.add('Main', Main,false);
-mainGame.state.start('Preload');
+var mainGame;
 
 
 module.exports = {
@@ -39,8 +36,16 @@ module.exports = {
 	 *		@param {Object} opts.custom - 自定义参数
 	 */
 	init : function(opts){
+		var ua = navigator.userAgent;
 		if (game.env.wx) {
             $('body').addClass('wx');
+        }
+        if(game.env.xview){
+        	$('body').addClass('xview');
+        }
+        if(ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1){
+
+        	 $('body').addClass('android');
         }
 		window.opts = opts;
 	},
@@ -66,7 +71,11 @@ module.exports = {
 	 *		@param {Object} opts.custom - 自定义参数
 	 */
 	start : function(opts){
-		
+
+		mainGame = new Phaser.Game(750,1334 , Phaser.CANVAS, 'container');
+		mainGame.state.add('Preload', Preloader,false);
+		mainGame.state.add('Main', Main,false);
+		mainGame.state.start('Preload');
 	},
 
 	/**
@@ -78,6 +87,7 @@ module.exports = {
 	 *		@param {Object} opts.custom - 自定义参数
 	 */
 	restart : function(opts){
+		$('.preload').hide();
 		mainGame.state.start('Main');
 		
 	}

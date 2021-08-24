@@ -8,16 +8,43 @@ body{
 	width: 750px;
 	height: 100%;
 	overflow:hidden;
+	background: #342734;
+}
+#container canvas{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
 }
 .preload{
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: url(../img/preloadbg.jpg) no-repeat #332633;
+	background: url(../img/preload.jpg) no-repeat center bottom #332633;
 	background-size: 750px 1334px;
 	top: 0;
 	z-index: 10;
+}
+.texture{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(../img/texture_.png) repeat-y;
+	background-size: 750px 342px;
+	height: 100%;
+	width: 100%;
+}
 
+.logo {
+	position: absolute;
+	width: 129px;
+	height: 172px;
+	background: url(../img/logo.png) no-repeat;
+	background-size: contain;
+	top: 0;
+	left: 36px;
+}
+@media only screen and (device-width : 375px) and (device-height : 812px) and (-webkit-device-pixel-ratio : 3) {
+	.xview .logo{ top:120px;}
 }
 .progress{
 	color: #e6ca6a;
@@ -73,6 +100,7 @@ body{
 	bottom: 0;
 	background: url(../img/guide.png) no-repeat center bottom;
 	background-size: 750px 1334px;
+	background-color: rgba(0,0,0,.7);
 	width: 100%;
 	height: 100%;
 	z-index: 11;
@@ -132,6 +160,8 @@ body{
 	background: url(../img/close.png) no-repeat;
 	background-size: contain;
 	top: calc((100%/2) + (884px/2) + 20px);
+	left: 50%;
+    margin-left: -0.35rem;
 }
 .padt_p_type_custom0 .padt_p_content{
 	width: 629px;
@@ -147,7 +177,7 @@ body{
 	height: 1116px;
 	background-size: 750px 1116px;
 	position: absolute;
-	bottom:200px;
+	bottom:140px;
 	left: 0;
 }
 .padt_p_type_custom1 .padt_p_hide_btn{
@@ -164,7 +194,14 @@ body{
 	height: 42px;
 	letter-spacing: 20px;
 	font-weight: bold;
-	font-family: 'verdana';
+	font-family: 'verdana','Droid Sans';
+	text-align: center;
+	line-height: 42px;
+	display: none;
+}
+.android #countDown{
+	left: 218px;
+	bottom: 952px; 
 }
 #score{
 	color: #dc4a10;
@@ -172,11 +209,18 @@ body{
 	position: absolute;
 	bottom: 954px;
 	left: 434px;
-	width: 80px;
+	width: 124px;
 	height: 42px;
+	text-align: center;
+	line-height: 42px;
 	letter-spacing: 17px;
 	font-weight: bold;
-	font-family: 'verdana';
+	font-family: 'verdana','Droid Sans';
+}
+.android #score{
+	left: 437px;
+	bottom: 952px; 
+	letter-spacing: 22px;
 }
 .padt_p_btn_jump0 {
 	position: absolute;
@@ -227,7 +271,7 @@ body{
 	height: 1117px;
 	background-size: 750px 1117px;
 	position: absolute;
-	bottom: 200px;
+	bottom: 140px;
 	left: 0;
 }
 .padt_p_type_coupon .padt_p_pack{
@@ -243,27 +287,29 @@ body{
 	font-family: verdana;
 	left: 50px;
 	top: 10px;
-	text-align: left;
+	text-align: right;
 	overflow: hidden;
-	word-break: no
 }
 .padt_p_type_coupon .padt_p_pack_item_val span{
 	font-family: arial;
 	font-size: 55px;
 	margin-right: 1px;
-	
+
 }
 .padt_p_type_coupon .padt_p_pack_item_cond{
+	font-family: arial;
 	left: 220px;
 	top:20px;
 	font-size: 18px;
+	height: 23px;
+	line-height: 25px;
 	color: #fff8e3;
 	background: #f99f00;
 	border-radius: 10px;
 	padding:0 8px;
-	padding-top: 3px;
-	padding-bottom: 2px;
+
 }
+
 .padt_p_type_coupon .padt_p_hide_btn,.padt_p_type_retry .padt_p_hide_btn,.padt_p_type_login .padt_p_hide_btn,.padt_p_type_fail .padt_p_hide_btn{
 	display: none;
 }
@@ -274,14 +320,22 @@ body{
 	left: 46px;
 	text-align: center;
 	height: 27px;
+	line-height: 27px;
 	overflow: hidden;
 }
+.android .padt_p_pack_item_cate{
+	font-size: 22px;
+	font-family: 'Droid Sans';
+}
+
 .padt_p_pack_item_tips{
 	font-size:24px;
 	top: 55px;
 	left: 220px;
 	font-weight: bold;
-
+}
+.android .padt_p_pack_item_cate{
+	top:108px;
 }
 .padt_p_type_coupon .padt_p_btn_jump0{
 	background: url(../img/button1.png) no-repeat;
@@ -309,7 +363,7 @@ body{
 	width: 750px;
 	height: 1114px;
 	position: absolute;
-	bottom:200px;
+	bottom:140px;
 	left: 0;
 }
 .padt_p_btn_login{
@@ -328,7 +382,7 @@ body{
 	width: 750px;
 	height: 1118px;
 	position: absolute;
-	bottom:200px;
+	bottom:140px;
 	left: 0;
 }
 .padt_p_type_fail .padt_p_btn_jump0{

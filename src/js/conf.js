@@ -1,8 +1,9 @@
 var ENV = (function(){
 		var ua = navigator.userAgent;
+
 		return {
 			xview : typeof XView != 'undefined', //是否是在xview中
-			app : /jdapp/i.test(ua), //是否在京东app中
+			app : true, //是否在京东app中
 			wx : /MicroMessenger/i.test(ua), //是否在微信中
 			qq : /MQQBrowser/i.test(ua) //是否在QQ中
 		}
@@ -149,7 +150,7 @@ var ENV = (function(){
 
 	//指定跳转地址
 	jumpUrls: {
-		0: 'https://h5.m.jd.com/dev/3Z76PLbDaFyu8TYibVBGFucyE5qt/index.html',
+		0: 'https://pro.m.jd.com/mall/active/3vgiBMHNkB5vuYCPpTqMyrEJXvGA/index.html',
 		1: 'https://h5.m.jd.com/dev/32g4G7FQEG6DFqZrVd82HsNWbmSF/index.html'
 	},
 
@@ -250,7 +251,7 @@ var ENV = (function(){
 
 	//埋点参数
 	trackParam: {
-		activityId: '123456789',
+		activityId: '00087174',
 		groupId: '987654321',
 		advertIds: {
 			LotteryInterface : '',
